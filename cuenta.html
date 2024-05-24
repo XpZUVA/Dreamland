@@ -8,6 +8,7 @@
         <title>Dreamland</title>
         <link rel="stylesheet" type="text/css" href="css/styles.css">
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="/scripts/loginButton.js"></script> 
 
     </head>
     <body>
@@ -23,19 +24,25 @@
                 </ul>
             </nav>
         </header>
-    </body>
-    <div id="areas-container"></div>
-    <footer>
-        <ul class="redesSociales">
-            <li><img src="/assets/imagenes/redes/instagram.png" alt="Instagram"></li> 
+        <div class="profile-container">
+            <div class="profile-image">
+                <img id="profile-img" src="assets/imagenes/default-profile.png" alt="Imagen de Perfil" class="profile-img">
+                <input type="file" id="file-input" accept="image/*">
+                <div class="profile-info"></div>  
+                <button id="logoutButton">Cerra sesión</button>            
+            </div>
+    
+        <footer>
+            <ul class="redesSociales">
+                <li><img src="/assets/imagenes/redes/instagram.png" alt="Instagram"></li> 
                 <li><img src="/assets/imagenes/redes/facebook.png" alt="Facebook"></li>
                 <li><img src="/assets/imagenes/redes/twitter.png" alt="Twitter"></li>   
-                <li><img src="/assets/imagenes/redes/youtube.png" alt="YouTube"></li>           
-        </ul>
-        <p id="Copyright">© 2024 Dreamland. Todos los derechos reservados.</p>
-    </footer>
+                <li><img src="/assets/imagenes/redes/youtube.png" alt="YouTube"></li>            
+            </ul>
+            <p id="Copyright">© 2024 Dreamland. Todos los derechos reservados.</p>
+        </footer>
+    </body>
     <script src="/scripts/areas.js"></script>
-    <script src="/scripts/loginButton.js"></script>
-    <script src="scripts/loggedIn.js"></script>
     <script src="/scripts/account.js"></script>
+    <script src="scripts/loggedIn.js"></script>
 </html> 

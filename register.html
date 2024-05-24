@@ -6,9 +6,7 @@
     <link rel="stylesheet" type="text/css" href="css/styles.css">
     <title>Dreamland</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="/scripts/loginButton.js"></script>
-    <script src="/scripts/loginVal.js"></script>
-    <script src="/scripts/loggedIn.js"></script>
+    
 </head>
 <body>
     <header>
@@ -22,26 +20,30 @@
             </ul>
         </nav>
     </header>
-    <div class="formLoginDiv">
-        <form id="formLogin">
+    
+        <form id="formRegister">
+            <input type="text" placeholder="Nombre" id="name">
+            <input type="text" placeholder="Apellidos" id="surname">
             <input type="text" placeholder="Nombre de usuario" id="username">
             <input type="email" placeholder="Correo electrónico" id="email">
             <input type="password" placeholder="Contraseña" id="password">
-            <input type="submit" value="Iniciar sesión" id="loginButton">
-            <div class="errorMessages"></div>
-            <button id="createAccountButton">Crear cuenta nueva</button>
+            <input type="password" placeholder="Repetir contraseña" id="passwordRepeat">
+            <input type="submit" value="Registrarse" id="registerButton">
+            <div class="errorMessages"></div>            
         </form>
-        
-    </div>
-        
+    
+    
     <footer>
         <ul class="redesSociales">
             <li><img src="/assets/imagenes/redes/instagram.png" alt="Instagram"></li> 
-                <li><img src="/assets/imagenes/redes/facebook.png" alt="Facebook"></li>
-                <li><img src="/assets/imagenes/redes/twitter.png" alt="Twitter"></li>   
-                <li><img src="/assets/imagenes/redes/youtube.png" alt="YouTube"></li>          
+            <li><img src="/assets/imagenes/redes/facebook.png" alt="Facebook"></li>
+            <li><img src="/assets/imagenes/redes/twitter.png" alt="Twitter"></li>   
+            <li><img src="/assets/imagenes/redes/youtube.png" alt="YouTube"></li>             
         </ul>
         <p id="Copyright">© 2024 Dreamland. Todos los derechos reservados.</p>
     </footer>
+    <script src="/scripts/register.js"></script>
+    <script src="/scripts/loginButton.js"></script>
+
 </body>
 </html>

@@ -19,13 +19,34 @@ $(document).ready(function(){
                         $.each(shows, function(index, show){
                             html += '<li>' + show.name + '<br>';
                             if (show.hours && show.hours.length > 0) {
-                                html += 'Horarios: ' + show.hours.join(', ') + '<br>';
+                                html += 'Horarios disponibles: ' + show.hours.join(', ') + '<br>';
+                                // Obtener el próximo horario del espectáculo
+                                var nextShowTime = getNextShowTime(show.hours);
+                                // Calcular y mostrar el tiempo restante en tiempo real
+                                if (nextShowTime) {
+                                    var intervalId = setInterval(function() {
+                                        var timeDifference = nextShowTime - new Date();
+                                        if (timeDifference > 0) {
+                                            var remainingHours = Math.floor((timeDifference / (1000 * 60 * 60)) % 24);
+                                            var remainingMinutes = Math.floor((timeDifference / (1000 * 60)) % 60);
+                                            var remainingSeconds = Math.floor((timeDifference / 1000) % 60);
+                                            html += 'Tiempo restante: ' + remainingHours + 'h ' + remainingMinutes + 'm ' + remainingSeconds + 's' + '<br>';
+                                        } else {
+                                            clearInterval(intervalId);
+                                            html += 'Tiempo restante: No disponible<br>';
+                                        }
+                                        $('#'+area+'esp .remaining-time-' + index).text('Tiempo restante: ' + remainingHours + 'h ' + remainingMinutes + 'm ' + remainingSeconds + 's');
+                                    }, 1000);
+                                } else {
+                                    html += 'Tiempo restante: No disponible<br>';
+                                }
+                                html += '<span class="remaining-time remaining-time-' + index + '"></span><br>';
                             } else {
                                 html += 'No hay horarios disponibles<br>';
                             }
                             if(show.express) {
                                 html += 'Express: Sí<br>';
-                            }else{
+                            } else {
                                 html += 'Este espectáculo no tiene pase express<br>';
                             }
                             html += '</li>';
@@ -48,3 +69,18 @@ $(document).ready(function(){
         }
     });
 });
+
+// Función para obtener el próximo horario de un espectáculo
+function getNextShowTime(hours) {
+    var now = new Date();
+    for (var i = 0; i < hours.length; i++) {
+        var [hour, minute] = hours[i].split(':');
+        var showTime = new Date();
+        showTime.setHours(parseInt(hour));
+        showTime.setMinutes(parseInt(minute));
+        if (showTime > now) {
+            return showTime;
+        }
+    }
+    return null;
+}

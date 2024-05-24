@@ -6,7 +6,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <link rel="stylesheet" type="text/css" href="css/styles.css">
+        <link rel="stylesheet" type="text/css" href="css/styles.css"> 
         <title>Dreamland</title>
 
     </head>
@@ -18,20 +18,24 @@
                     <li><a href="/index.html">Inicio</a></li>
                     <li><a href="/areas.html">Áreas temáticas</a></li>
                     <li><a href="/espectaculos.html">Espectáculos</a></li>
-                    <li><button>Iniciar sesión</button></li>
+                    <li id="loginButtonNav"><button >Iniciar sesión</button></li>
+                    <li id="accountButton"><button>Cuenta</button></li>
                 </ul>
             </nav>
         </header>
         <div id="shows-container"></div>
         <footer>
             <ul class="redesSociales">
-                <li><img src="" alt="Instagram"></li> 
-                <li><img src="" alt="Facebook"></li>
-                <li><img src="" alt="Twitter"></li>   
-                <li><img src="" alt="YouTube"></li>            
+                <li><img src="/assets/imagenes/redes/instagram.png" alt="Instagram"></li> 
+                <li><img src="/assets/imagenes/redes/facebook.png" alt="Facebook"></li>
+                <li><img src="/assets/imagenes/redes/twitter.png" alt="Twitter"></li>   
+                <li><img src="/assets/imagenes/redes/youtube.png" alt="YouTube"></li>           
             </ul>
             <p id="Copyright">© 2024 Dreamland. Todos los derechos reservados.</p>
         </footer>
         <script src="/scripts/espectaculos.js"></script>
+        <script src="/scripts/loginButton.js"></script>
+        <script src="scripts/loggedIn.js"></script>
+        <script src="/scripts/account.js"></script>
     </body>
 </html>
