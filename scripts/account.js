@@ -47,7 +47,7 @@ $(document).ready(function(){
     showFavorites();
 
     $('#logoutButton').on('click', function(event){
-        localStorage.removeItem('user');
+        localStorage.removeItem('username');
         localStorage.removeItem('favorites');
         localStorage.setItem('loggedIn', false);
         window.location.href = 'index.html';

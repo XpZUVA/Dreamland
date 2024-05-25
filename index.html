@@ -13,8 +13,9 @@
     <body>
         <header>
             <nav>
-                <img src="/assets/logos/logo.png" alt="LogoDreamland"><sub>P03</sub></img>
-                <ul>
+                <a href="index.html"><img src="/assets/logos/logo.png" alt="LogoDreamland" class="logo"></img></a>
+                <p>P03</p>
+                <ul class="links">
                     <li><a href="/index.html">Inicio</a></li>
                     <li><a href="/areas.html">Áreas temáticas</a></li>
                     <li><a href="/espectaculos.html">Espectáculos</a></li>
@@ -24,10 +25,13 @@
             </nav>
         </header>
         <main>
-            <section class="imageRelative">
-                <img src="/assets/imagenes/backgroundNoria.jpeg" alt="Imagen noria">
-                <h1>¡Bienvenidos a Dreamland!</h1>
-                <p>En Dreamland encontrarás todo lo que necesitas para pasar un día inolvidable. Disfruta de nuestras atracciones, espectáculos y áreas temáticas. ¡No te lo pierdas!</p>
+            <section class="fondoNoria">
+                <img src="/assets/imagenes/noria.jpg" alt="fondoNoria">
+                <div id="texto">
+                    <h1>¡Bienvenido a Dreamland!</h1>
+                    <p>En Dreamland encontrarás todo lo que necesitas para pasar un día inolvidable. Disfruta de nuestras atracciones, espectáculos y áreas temáticas. ¡No te lo pierdas!</p>
+                </div>
+                
             </section>
             <section class="atraccionesImportantes">
                 <h2>Algunas de nuestras atracciones</h2>
@@ -39,20 +43,39 @@
                 </ul>
             </section>
         </main>
+        <div id="localizacion">
+            <h2>¿Dónde nos encontramos?</h2>
+            <div id="map"></div>
+        </div>
+        <div id="comentarios">
+            <h2>Escribe tu comentario:</h2>
+            <form id="postComentario">
+                <textarea placeholder="Escribe un comentario" id="comentario"></textarea>
+                <button type="submit">Enviar</button>
+            </form>
+            <h2>Comentarios:</h2>
+            <div id="comentariosPosted"></div>
+        </div>
         <footer>
-            <a href="">Contacto</a>
+            <div class="contacto">
+                <h3>Contáctanos:</h3>
+                <p>Email: dreamland-contact@dreamland.es</p>
+                <p>Teléfono: 912345678</p>
+            </div>
             <ul class="redesSociales">
-                <li><img src="/assets/imagenes/redes/instagram.png" alt="Instagram"></li> 
-                <li><img src="/assets/imagenes/redes/facebook.png" alt="Facebook"></li>
-                <li><img src="/assets/imagenes/redes/twitter.png" alt="Twitter"></li>   
-                <li><img src="/assets/imagenes/redes/youtube.png" alt="YouTube"></li>           
+                <li><a class="redSocialButton" href="https://www.instagram.com/parquedeatraccionesmadrid/"><img src="/assets/imagenes/redes/instagram.png" alt="Instagram"></a></li> 
+                <li><a class="redSocialButton" href="https://www.facebook.com/tivoli/?locale=es_ES"><img src="/assets/imagenes/redes/facebook.png" alt="Facebook"></a></li>
+                <li><a class="redSocialButton" href="https://x.com/patraccionesmad"><img src="/assets/imagenes/redes/twitter.png" alt="Twitter"></a></li>   
+                <li><a class="redSocialButton" href="https://youtu.be/yk05VoSb-dE?si=HxYWB1_AmWyaEssR"><img src="/assets/imagenes/redes/youtube.png" alt="YouTube"></a></li>           
             </ul>
             <p id="Copyright">© 2024 Dreamland. Todos los derechos reservados.</p>
         </footer>
         <script src="/scripts/loginButton.js"></script>
         <script src="scripts/loggedIn.js"></script>
         <script src="/scripts/account.js"></script>
-
+        <script src="/scripts/localizacion.js"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAWg2FsZBr8TH2NzVb0CQLnkTWzPu8la1M&callback=iniciarMap" async defer></script>
+        <script src="/scripts/comentarios.js"></script>
     </body>
 
 </html>
