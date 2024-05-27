@@ -15,9 +15,9 @@ $(document).ready(function(){
                     // Crear el HTML para los shows del área
                     var html = '<div id="' + area + 'esp"><h2>' + area + '</h2>';
                     if (shows && shows.length > 0) {
-                        html += '<ul class="lista-espectáculos">';
+                        html += '<ul class="lista-espectaculos">';
                         $.each(shows, function(index, show){
-                            html += '<li>' + show.name + '<br>';
+                            html += '<li>' + '<h3>' +show.name + '</h3>' + '<br>';
                             if (show.hours && show.hours.length > 0) {
                                 html += 'Horarios disponibles: ' + show.hours.join(', ') + '<br>';
                                 // Obtener el próximo horario del espectáculo

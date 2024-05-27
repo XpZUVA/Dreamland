@@ -35,7 +35,7 @@ $(document).ready(function(){
         let profileImageHTML = `<img id="profile-img" src="${profileImg}" alt="Imagen de perfil" class="profile-img">`;
 
         // Crear una lista para las atracciones favoritas
-        let favoritesListHTML = `<h2>${username}</h2><h3>Atracciones favoritas</h3><ul>`;
+        let favoritesListHTML = `<h2>${username}</h2><div class="atraccionesFav"><h3>Atracciones favoritas</h3><ul>`;
 
         // Iterar sobre los favoritos y agregarlos a la lista HTML
         for (const key in favorites) {
@@ -45,7 +45,7 @@ $(document).ready(function(){
             }
         }
 
-        favoritesListHTML += '</ul>';
+        favoritesListHTML += '</ul></div>';
 
         // Agregar la lista de favoritos y la imagen de perfil al contenedor en el HTML
         $('#profile-image').html(profileImageHTML);

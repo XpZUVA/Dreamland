@@ -18,8 +18,10 @@
 #areas-container .table{
     color: #fff;
     width: 70vw;
-    font-size: 1.5em;
+    height: 5vw;
+    font-size: 1em;
     margin: 1vw;
+
     border-collapse: collapse;
     
 }
@@ -210,30 +212,32 @@ to {
 
 @media only screen and (max-width: 768px) {
 
-    #areasContainer{
-        margin: 10vw 0;
+    #areas-container .table{
+        
+        height: 1vw;
+        font-size: 0.25em;
+        margin: 1vw 0;
     }
 
-    #areasContainer .table{
-        font-size: 1em;
-        width: 90vw;
+    .checkbox-wrapper-50 .plus-minus{
+        
+        width: 10px;
+        height: 10px;
     }
-
-
 
 }
 
 /* TABLET */
 @media only screen and (min-width: 769px) and (max-width: 991px) {
+    #areas-container .table{
+        
+        height: 10vw;
+        font-size: 0.8em;
+        margin: 1vw 0;
+    }
 
-}
-
-/* LAPTOP */
-@media only screen and (min-width: 992px) and (max-width: 1200px) {
-
-}
-
-/* PC */
-@media only screen and (min-width: 1201px) {
-
+    .checkbox-wrapper-50 .plus-minus{
+        width: 20px;
+        height: 20px;
+    }
 }
