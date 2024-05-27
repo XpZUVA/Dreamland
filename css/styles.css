@@ -1,35 +1,35 @@
-:root{
+:root {
     --color-1: #1D1A39;
     --color-2: #451952;
     --color-3: #662549;
     --color-4: #AE445A;
     --color-5: #F39F5A;
     --color-6: #E8BCB9;
-
 }
 
-
-body{
+body {
     font-family: 'Roboto', sans-serif;
     background-color: #1a1a1a;
     color: #fff;
     margin: 0;
     padding: 0;
 }
-nav{
+
+nav {
     top: 0;
     height: 80px;
     width: 100%;
+    z-index: 1;
     background-color: #1a1a1a;
     border-bottom: 2px solid #1a1a1a;
     box-shadow: 0px 0px 3px #eee;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;   
+    justify-content: space-between;
     position: fixed;
 }
 
-.logo{
+.logo {
     width: 75px;
     height: 75px;
     margin-top: 3px;
@@ -39,14 +39,15 @@ nav{
     filter: drop-shadow(0px 0px 2px var(--color-2));
 }
 
-nav p{
+nav p {
     color: #fff;
     margin-top: 30px;
-    margin-right: -290px;
+    margin-right: -400px;
+    font-weight: bold;
 }
 
 /*LISTA LINKS*/
-nav ul{
+nav ul {
     display: flex;
     flex-direction: row;
     list-style: none;
@@ -62,6 +63,7 @@ nav ul li a {
     color: #fff;
     text-decoration: none;
 }
+
 nav ul li a:after {
     content: "";
     display: block;
@@ -70,9 +72,11 @@ nav ul li a:after {
     width: 0px;
     transition: all .5s;
 }
-nav ul li a:hover {  
+
+nav ul li a:hover {
     color: var(--color-3);
 }
+
 nav ul li a:hover:after {
     width: 100%;
     color: var(--color-3);
@@ -80,20 +84,6 @@ nav ul li a:hover:after {
 }
 
 /*BOTON*/
-nav ul li button{
-    background-color: transparent;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    margin-right: 20px;
-    margin-top: -10px;
-    margin-left: 10px;
-    cursor: pointer;
-    border-radius: 5px;
-    font-size: 16px;
-    font-weight: bold;
-    border: 2px solid var(--color-2);
-}
 nav ul li button {
     background-color: transparent;
     color: #fff;
@@ -106,55 +96,40 @@ nav ul li button {
     border-radius: 5px;
     font-size: 16px;
     font-weight: bold;
-    border: 2px solid var(--color-2);
+    border: 2px solid var(--color-3);
     position: relative;
     overflow: hidden;
-    transition: all 0.5s ease-in-out; /* Animación suave */
-}
-
-nav ul li button {
-    background-color: transparent;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    margin-right: 20px;
-    margin-top: -10px;
-    margin-left: 10px;
-    cursor: pointer;
-    border-radius: 5px;
-    font-size: 16px;
-    font-weight: bold;
-    border: 2px solid var(--color-2);
-    transition: background-color 0.3s ease; /* Animación de color de fondo */
+    transition: all 0.5s ease-in-out;
 }
 
 nav ul li button:hover {
-    background-color: var(--color-2); /* Cambia el color del fondo al hover */
-    color: #fff; /* Mantiene el color del texto blanco */
+    background-color: var(--color-3);
+    color: #fff;
 }
 
 /*MAIN*/
-main{
+main {
     margin-top: 80px;
-    
 }
 
 /*IMAGEN NORIA*/
 .fondoNoria {
     width: 100%;
-    height: 900px; 
+    height: 600px;
     position: relative;
     overflow: hidden;
 }
 
 .fondoNoria img {
     width: 100%;
-    position: absolute; 
-    z-index: -1; 
+    position: absolute;
+    filter: brightness(50%);
+    z-index: -1;
 }
 
 #texto {
     position: absolute;
+    z-index: -1;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -165,39 +140,369 @@ main{
     text-shadow: 0px 0px 5px #000;
 }
 
+/*ATRACCIONES*/
+#atraccionesImportantes {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 100px;
+}
 
+#atraccionesImportantes h2 {
+    color: #fff;
+    font-size: 40px;
+    font-weight: bold;
+    margin-bottom: 50px;
+}
 
+.atracciones {
+    display: flex;
+    list-style: none;
+    flex-direction: row;
+    z-index: -1;
+}
 
+.atracciones li {
+    margin: 20px;
+    padding: 0px;
+    background-color: var(--color-1);
+    border-radius: 10px;
+    box-shadow: 0px 0px 5px #000;
+    transition: all 0.5s;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+}
 
+.atracciones img {
+    width: 100%;
+    height: 300px;
+    margin: 0px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
 
+.textoAtracciones {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
+.textoAtracciones h3 {
+    color: #fff;
+    font-size: 30px;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 5px;
+    border-bottom: 1px solid #fff;
+}
 
+/*MAPA*/
+#localizacion {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
+#localizacion h2 {
+    color: #fff;
+    font-size: 40px;
+    font-weight: bold;
+    margin-bottom: 50px;
+}
 
-#map{
+#map {
     height: 400px;
     width: 30%;
+    box-shadow: 0px 0px 5px #000;
+    z-index: -1;
 }
 
-
-
-
-
-
-/*TELÉFONNO*/
-@media only screen and (max-width: 768px){
-    
-
+/*COMENTARIOS*/
+#comentarios {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 100px;
 }
-/*TABLET*/
-@media only screen and(max-width: 768px) and (max-width: 991px){
 
+#comentarios h2 {
+    color: #fff;
+    font-size: 40px;
+    font-weight: bold;
+    margin-bottom: 50px;
 }
-/*LAPTOP*/
-@media only screen and (max-width: 991px) and (max-width: 1200px){
 
+#postComentario {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 5px;
+    z-index: 0;
 }
-/*PC*/
-@media only screen and (min-width: 1200px){
 
+#postComentario textarea {
+    width: 100%;
+    height: 300px;
+    margin-bottom: 30px;
+    border-radius: 10px;
+    border: 2px solid var(--color-2);
+    padding: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    font-family: 'Roboto';
+    resize: none;
+}
+
+/*BOTON*/
+#postComentario input {
+    background-color: transparent;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    margin-right: 20px;
+    margin-top: -10px;
+    margin-left: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    border: 2px solid var(--color-3);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.5s ease-in-out;
+}
+
+#postComentario input:hover {
+    background-color: var(--color-3);
+    color: #fff;
+}
+
+/*COMENTARIOS POSTEADOS*/
+
+/* General container */
+#comentariosPostedContainer {
+    max-width: 800px;
+    margin-top: 100px;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+/* Comments header */
+#comentariosPostedContainer h2 {
+    text-align: center;
+    margin-bottom: 70px;
+}
+
+/* Comments list */
+#comentariosPosted ul {
+    list-style: none;
+    padding: 0;
+}
+
+/* Individual comment item */
+#comentariosPosted li {
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+}
+
+/* User comment info */
+.userComentario {
+    display: flex;
+    align-items: center;
+}
+
+/* Profile image */
+.profileImageComentarios {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+/* Username */
+.usernameComentario {
+    font-weight: bold;
+    margin: 0;
+}
+
+/* Comment text */
+.comentarioP {
+    margin-top: 20px;
+    margin-bottom: 0px;
+}
+
+/*FOOTER*/
+
+footer {
+    background-color: #1a1a1a;
+    color: #fff;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    border-top: 3px solid #fff;
+    width: 100%;
+    margin-top: 100px;
+    box-sizing: border-box;
+}
+
+.contacto {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 20px;
+}
+
+.contacto h3 {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.contacto p {
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.contacto p a {
+    color: var(--color-3);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.contacto p a:hover {
+    color: var(--color-4);
+}
+
+.contacto p span{
+    font-weight: bold;
+    color: var(--color-3);
+}
+
+.contacto p span:hover {
+    color: var(--color-4);
+}
+
+.redesSociales {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 20px;
+    list-style: none;
+}
+
+.redesSociales li {
+    margin: 10px;
+}
+
+.redesSociales img {
+    width: 100px;
+    height: 100px;
+}
+
+.redesSociales img:hover {
+    transform: scale(1.1);
+}
+
+#Copyright {
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 80px;
+}
+
+#areas-container {
+    margin-top: 85px;
+}
+
+.formLoginDiv {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 100px;
+}
+
+.profile-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 100px;
+}
+
+/* TELÉFONO */
+@media only screen and (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+        margin: 0;
+    }
+
+    nav p {
+        margin-right: 0;
+        margin-top: 10px;
+    }
+
+    .fondoNoria {
+        height: 300px;
+    }
+
+    #texto {
+        font-size: 30px;
+    }
+
+    .atracciones {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #map {
+        width: 80%;
+    }
+
+    #postComentario textarea {
+        width: 90%;
+    }
+}
+
+/* TABLET */
+@media only screen and (min-width: 769px) and (max-width: 991px) {
+    .atracciones {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #map {
+        width: 60%;
+    }
+
+    #postComentario textarea {
+        width: 70%;
+    }
+}
+
+/* LAPTOP */
+@media only screen and (min-width: 992px) and (max-width: 1200px) {
+    .atracciones {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    #map {
+        width: 50%;
+    }
+
+    #postComentario textarea {
+        width: 50%;
+    }
+}
+
+/* PC */
+@media only screen and (min-width: 1201px) {
+    #map {
+        width: 30%;
+    }
+
+    #postComentario textarea {
+        width: 300%;
+    }
 }

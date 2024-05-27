@@ -9,13 +9,28 @@ function saveFavorites(favorites) {
     localStorage.setItem('favorites', JSON.stringify(favorites));
 }
 
-// Hacer una solicitud para obtener el XML
-fetch('/datos/ej2.xml')
-    .then(response => response.text())
-    .then(xmlText => {
+// Hacer una solicitud para obtener el JSON de tiempos de espera
+fetch('/datos/ej3.json')
+    .then(response => response.json())
+    .then(waitTimesData => {
+        console.log("JSON de tiempos de espera:", waitTimesData);  // Debugging output
+        const waitTimes = {};
+        waitTimesData.atracciones.forEach(item => {
+            const [key, value] = Object.entries(item)[0];
+            waitTimes[key] = value;
+        });
+
+        // Hacer una solicitud para obtener el XML
+        return fetch('/datos/ej2.xml').then(response => response.text()).then(xmlText => {
+            return { xmlText, waitTimes };
+        });
+    })
+    .then(({ xmlText, waitTimes }) => {
         // Crear un nuevo parser XML
         const parser = new DOMParser();
         const xmlDoc = parser.parseFromString(xmlText, "text/xml");
+        
+        console.log("XML Document:", xmlDoc);  // Debugging output
 
         // Mapeo de acrónimos
         const areaAcronyms = {
@@ -33,24 +48,25 @@ fetch('/datos/ej2.xml')
         const areas = xmlDoc.querySelectorAll('area');
 
         // Iterar sobre cada área y generar el HTML correspondiente
-        areas.forEach((area, index) => {
+        areas.forEach((area, areaIndex) => {
             const nombre = area.getAttribute('nombre');
             const decoracionNode = area.querySelector('decoracion');
             const decoracion = decoracionNode ? decoracionNode.textContent : '';
 
             // Obtener el acrónimo del nombre del área
             const areaAcronym = areaAcronyms[nombre];
+            console.log(`Procesando área: ${nombre} (${areaAcronym})`);  // Debugging output
 
             // Verificar si hay al menos una atracción en el área
             const atracciones = area.querySelectorAll('atraccion');
             if (atracciones.length > 0 && areaAcronym) {
                 // Crear el HTML de las atracciones en forma de tabla
                 let atraccionesHTML = `<table border="1" id="${areaAcronym}">`;
-                
+
                 // Agregar el nombre del área y su decoración en la primera fila
                 atraccionesHTML += `
                 <tr>
-                    <td colspan="9">${nombre} - ${decoracion}</td>
+                    <td colspan="11">${nombre} - ${decoracion}</td>
                 </tr>
                 <tr>
                     <th>Nombre</th>
@@ -61,11 +77,14 @@ fetch('/datos/ej2.xml')
                     <th>Altura máxima</th>
                     <th>Acceso express</th>
                     <th>Fecha de revisión</th>
+                    <th>Tiempo de espera</th>
+                    <th>Tiempo de espera express</th>
                     <th>Favorito</th>
+                    
                 </tr>
                 `;
 
-                atracciones.forEach(atraccion => {
+                atracciones.forEach((atraccion, atraccionIndex) => {
                     const nombreComercialNode = atraccion.querySelector('nombreComercial');
                     const estadoNode = atraccion.querySelector('estado');
                     const tipoNode = atraccion.querySelector('tipo');
@@ -76,24 +95,33 @@ fetch('/datos/ej2.xml')
                     const fechaRevisionNode = atraccion.querySelector('fechaRevision');
 
                     // Generar una clave única para la atracción
-                    const attractionKey = `${areaAcronym}_${nombreComercialNode.textContent}`;
+                    const attractionKey = `${areaAcronym}-${String(atraccionIndex + 1).padStart(2, '0')}`;
+
+                    console.log(`Procesando atracción: ${attractionKey}`);  // Debugging output
+
+                    // Obtener los tiempos de espera del JSON
+                    const waitTime = waitTimes[attractionKey] ? waitTimes[attractionKey][0] : 'N/A';
+                    const expressWaitTime = waitTimes[attractionKey] ? (waitTimes[attractionKey][1] !== -1 ? waitTimes[attractionKey][1] : 'N/A') : 'N/A';
 
                     // Determinar si la atracción es favorita
                     const isFavorite = favorites[attractionKey] || false;
 
-                    // Agregar al HTML solo si los nodos existen
-                    if (nombreComercialNode && estadoNode && tipoNode && lvlIntensidadNode && alturaMinNode && accesoExpressNode) {
+                    // Agregar al HTML solo si los nodos esenciales existen
+                    if (nombreComercialNode && estadoNode && lvlIntensidadNode && alturaMinNode && accesoExpressNode) {
                         atraccionesHTML += `
                         <tr>
                             <td>${nombreComercialNode.textContent}</td>
                             <td>${estadoNode.textContent}</td>
-                            <td>${tipoNode.textContent}</td>
+                            <td>${tipoNode ? tipoNode.textContent : 'N/A'}</td>
                             <td>${lvlIntensidadNode.textContent}</td>
                             <td>${alturaMinNode.textContent}</td>
                             <td>${alturaMaxNode ? alturaMaxNode.textContent : 'N/A'}</td>
                             <td>${accesoExpressNode.textContent}</td>
                             <td>${fechaRevisionNode ? fechaRevisionNode.textContent : 'N/A'}</td>
+                            <td>${waitTime}</td>
+                            <td>${expressWaitTime}</td>
                             <td><input type="checkbox" class="favorite-checkbox" data-key="${attractionKey}" ${isFavorite ? 'checked' : ''}></td>
+                            
                         </tr>
                         `;
                     }
@@ -116,4 +144,4 @@ fetch('/datos/ej2.xml')
             });
         });
     })
-    .catch(error => console.error('Error al obtener el XML:', error));
+    .catch(error => console.error('Error al obtener los datos:', error));

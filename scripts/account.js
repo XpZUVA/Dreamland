@@ -1,4 +1,7 @@
 $(document).ready(function(){
+
+    const defaultProfileImg = '/assets/imagenes/default-profile.png'; // Reemplaza con la ruta de tu imagen predeterminada
+
     $('#accountButton').on('click', function(event){
         window.location.href = 'cuenta.html';
     });
@@ -9,6 +12,7 @@ $(document).ready(function(){
             var reader = new FileReader();
             reader.onload = function(e) {
                 $('#profile-img').attr('src', e.target.result);
+                localStorage.setItem('profile-img', e.target.result);
             }
             reader.readAsDataURL(file);
         }
@@ -25,6 +29,10 @@ $(document).ready(function(){
         // Obtener los favoritos de localStorage
         const favorites = getFavorites();
         const username = localStorage.getItem('username');
+        const profileImg = localStorage.getItem('profile-img') || defaultProfileImg; // Usar imagen predeterminada si no hay imagen en localStorage
+
+        // Crear la imagen de perfil y el input para subir una nueva imagen
+        let profileImageHTML = `<img id="profile-img" src="${profileImg}" alt="Imagen de perfil" class="profile-img">`;
 
         // Crear una lista para las atracciones favoritas
         let favoritesListHTML = `<h2>${username}</h2><h3>Atracciones favoritas</h3><ul>`;
@@ -39,8 +47,22 @@ $(document).ready(function(){
 
         favoritesListHTML += '</ul>';
 
-        // Agregar la lista de favoritos al contenedor en el HTML
+        // Agregar la lista de favoritos y la imagen de perfil al contenedor en el HTML
+        $('#profile-image').html(profileImageHTML);
         $('.profile-info').html(favoritesListHTML);
+
+        // Reasignar el event listener al nuevo input de archivo
+        $('#file-input').on('change', function(event) {
+            var file = event.target.files[0];
+            if (file) {
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    $('#profile-img').attr('src', e.target.result);
+                    localStorage.setItem('profile-img', e.target.result);
+                }
+                reader.readAsDataURL(file);
+            }
+        });
     }
 
     // Llamar a la función para mostrar las atracciones favoritas al cargar el documento
@@ -49,6 +71,7 @@ $(document).ready(function(){
     $('#logoutButton').on('click', function(event){
         localStorage.removeItem('username');
         localStorage.removeItem('favorites');
+        localStorage.removeItem('profile-img');
         localStorage.setItem('loggedIn', false);
         window.location.href = 'index.html';
     });

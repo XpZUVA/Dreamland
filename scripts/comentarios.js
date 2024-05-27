@@ -30,8 +30,8 @@ $(document).ready(function() {
     
     $('#postComentario').submit(function(e) {
         e.preventDefault();
-
         const nombre = localStorage.getItem('username');
+        const profileImg = localStorage.getItem('profile-img');
         const comentario = $('#comentarioArea').val();
 
         const isValid = validateCommentLength(comentario);
@@ -45,7 +45,7 @@ $(document).ready(function() {
             showErrorMessages(errorMessages);
         } else {
             const comentarios = getComentarios();
-            comentarios.push({ nombre: nombre ? nombre : 'Anónimo', comentario });
+            comentarios.push({ nombre: nombre ? nombre : 'Anónimo', comentario, profileImg: profileImg ? profileImg : '/assets/imagenes/default-profile.png'});
             saveComentarios(comentarios);
             $('#comentario').val('');
             clearErrorMessages();
@@ -57,16 +57,19 @@ $(document).ready(function() {
     
     function showComentarios() {
         const comentarios = getComentarios();
-        let comentariosHTML = '';
+        let comentariosHTML = '<ul>';
+        
 
         comentarios.forEach(comentario => {
-            comentariosHTML += `<p class="usernameComentario">${comentario.nombre}:</p><p class="comentarioP">${comentario.comentario}</p>`;
+            comentariosHTML += `<li><div class="userComentario"><img class="profileImageComentarios" src="${comentario.profileImg}"><h3 class="usernameComentario">${comentario.nombre}</h3></div><p class="comentarioP">${comentario.comentario}</p></li>`;
         });
-
+        comentariosHTML += '</ul>';
         $('#comentariosPosted').html(comentariosHTML);
     }
 
     
     showComentarios();
+    //localStorage.removeItem('comentarios');
+    
     
 });

@@ -33,13 +33,13 @@
                 </div>
                 
             </section>
-            <section class="atraccionesImportantes">
+            <section id="atraccionesImportantes">
                 <h2>Algunas de nuestras atracciones</h2>
                 <ul class="atracciones">
-                    <li><img src="/assets/imagenes/atracciones/barcoPirata.jpg" alt="Imagen barco pirata"><h3>Barco Pirata</h3><p></p></li>
-                    <li><img src="/assets/imagenes/atracciones/naveAlocada.jpg" alt="Imagen nave alocada"><h3>Nave alocada</h3><p></p></li>
-                    <li><img src="/assets/imagenes/atracciones/caidaLibre.jpg" alt="Imagen caida libre"><h3>Caida libre</h3><p></p></li>
-                    <li><img src="/assets/imagenes/atracciones/carrusel.jpg" alt="Imagen carrusel"><h3>Carrusel</h3><p></p></li>
+                    <li><img src="/assets/imagenes/atracciones/barcoPirata.jpg" alt="Imagen barco pirata"><div class="textoAtracciones"><h3>Barco Pirata</h3><p>Embárcate en la aventura más salvaje.</p></div></li>
+                    <li><img src="/assets/imagenes/atracciones/naveAlocada.jpg" alt="Imagen nave alocada"><div class="textoAtracciones"><h3>Nave alocada</h3><p>Giros, vueltas y emociones intergalácticas.</p></div></li>
+                    <li><img src="/assets/imagenes/atracciones/caidaLibre.jpg" alt="Imagen caida libre"><div class="textoAtracciones"><h3>Caida libre</h3><p>¿Te atreves a desafiar la gravedad?</p></div></li>
+                    <li><img src="/assets/imagenes/atracciones/carrusel.jpg" alt="Imagen carrusel"><div class="textoAtracciones"><h3>Carrusel</h3><p>Un viaje mágico lleno de colores y alegría</p></div></li>
                 </ul>
             </section>
         </main>
@@ -50,17 +50,20 @@
         <div id="comentarios">
             <h2>Escribe tu comentario:</h2>
             <form id="postComentario">
-                <textarea placeholder="Escribe un comentario" id="comentario"></textarea>
-                <button type="submit">Enviar</button>
+                <textarea placeholder="Escribe un comentario" id="comentarioArea"></textarea>
+                <input type="submit">
             </form>
-            <h2>Comentarios:</h2>
-            <div id="comentariosPosted"></div>
+            <div id="comentariosPostedContainer">
+                <h2>Comentarios:</h2>
+                <div id="comentariosPosted"></div>
+            </div>
+            
         </div>
         <footer>
             <div class="contacto">
                 <h3>Contáctanos:</h3>
-                <p>Email: dreamland-contact@dreamland.es</p>
-                <p>Teléfono: 912345678</p>
+                <p>Email: <a href="">dreamland-contact@dreamland.es</a></p>
+                <p>Teléfono: <span>912345678</span></p>
             </div>
             <ul class="redesSociales">
                 <li><a class="redSocialButton" href="https://www.instagram.com/parquedeatraccionesmadrid/"><img src="/assets/imagenes/redes/instagram.png" alt="Instagram"></a></li> 
