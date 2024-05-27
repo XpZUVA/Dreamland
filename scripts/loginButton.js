@@ -1,10 +1,10 @@
 $(document).ready(function(){
     // Redirección al hacer clic en el botón de navegación
-    $('#loginButtonNav').click(function(){
-        window.location.href = 'login.html';
-    });
-
-    $('#createAccountButton').click(function(){
-        window.location.href = 'register.html';
+    $('#logout').on('click', function(){
+        localStorage.removeItem('username');
+        localStorage.removeItem('favorites');
+        localStorage.removeItem('profile-img');
+        localStorage.setItem('loggedIn', false);
+        window.location.href = 'index.html';
     });
 });

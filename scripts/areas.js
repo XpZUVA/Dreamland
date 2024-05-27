@@ -61,7 +61,7 @@ fetch('/datos/ej3.json')
             const atracciones = area.querySelectorAll('atraccion');
             if (atracciones.length > 0 && areaAcronym) {
                 // Crear el HTML de las atracciones en forma de tabla
-                let atraccionesHTML = `<table border="1" id="${areaAcronym}">`;
+                let atraccionesHTML = `<table border="1" id="${areaAcronym}" class="table">`;
 
                 // Agregar el nombre del área y su decoración en la primera fila
                 atraccionesHTML += `
@@ -80,7 +80,6 @@ fetch('/datos/ej3.json')
                     <th>Tiempo de espera</th>
                     <th>Tiempo de espera express</th>
                     <th>Favorito</th>
-                    
                 </tr>
                 `;
 
@@ -97,35 +96,80 @@ fetch('/datos/ej3.json')
                     // Generar una clave única para la atracción
                     const attractionKey = `${areaAcronym}-${String(atraccionIndex + 1).padStart(2, '0')}`;
 
-                    console.log(`Procesando atracción: ${attractionKey}`);  // Debugging output
-
                     // Obtener los tiempos de espera del JSON
                     const waitTime = waitTimes[attractionKey] ? waitTimes[attractionKey][0] : 'N/A';
                     const expressWaitTime = waitTimes[attractionKey] ? (waitTimes[attractionKey][1] !== -1 ? waitTimes[attractionKey][1] : 'N/A') : 'N/A';
 
                     // Determinar si la atracción es favorita
-                    const isFavorite = favorites[attractionKey] || false;
+                    const isFavorite = favorites[attractionKey] ? true : false;
+
+                    var classEstado = ''; 
+                    var nvlIntesidad = '';
+                    var express = '';
+                    var classTipo = '';
 
                     // Agregar al HTML solo si los nodos esenciales existen
-                    if (nombreComercialNode && estadoNode && lvlIntensidadNode && alturaMinNode && accesoExpressNode) {
+                    if (nombreComercialNode && estadoNode && lvlIntensidadNode && accesoExpressNode) {
+                        if(estadoNode.textContent === 'OP'){
+                            classEstado = 'bg-success';
+                        } else if(estadoNode.textContent === 'OB'){
+                            classEstado = 'bg-warning';
+                        } else if(estadoNode.textContent === 'CE'){
+                            classEstado = 'bg-danger';
+                        }
+
+                        if(lvlIntensidadNode.textContent === 'Suave'){
+                            nvlIntesidad = 'text-success';
+                        } else if(lvlIntensidadNode.textContent === 'Moderada'){
+                            nvlIntesidad = 'text-warning';
+                        } else if(lvlIntensidadNode.textContent === 'Intensa'){
+                            nvlIntesidad = 'text-danger';
+                        }
+
+                        if(accesoExpressNode.textContent === 'true'){
+                            express = 'bg-success';
+                            accesoExpressNode.textContent = 'Sí';
+                        } else {
+                            accesoExpressNode.textContent = 'No';
+                            express = 'bg-danger';
+                        }
+
+                        if(tipoNode){
+                            if(tipoNode.textContent === 'Acuática'){
+                                classTipo = 'text-info';
+                            } else if(tipoNode.textContent === 'Montaña rusa'){
+                                classTipo = 'text-green';    
+                            } else if(tipoNode.textContent === 'Infantil'){
+                                classTipo = 'text-pink';
+                            } else if(tipoNode.textContent === 'Giratoria'){
+                                classTipo = 'text-purple';
+                            }
+                        } else {
+                            classTipo = 'text-secondary';
+                        }
+
                         atraccionesHTML += `
                         <tr>
                             <td>${nombreComercialNode.textContent}</td>
-                            <td>${estadoNode.textContent}</td>
-                            <td>${tipoNode ? tipoNode.textContent : 'N/A'}</td>
-                            <td>${lvlIntensidadNode.textContent}</td>
-                            <td>${alturaMinNode.textContent}</td>
+                            <td class="${classEstado}">${estadoNode.textContent}</td>
+                            <td class="${classTipo}">${tipoNode ? tipoNode.textContent : 'N/A'}</td>
+                            <td class="${nvlIntesidad}">${lvlIntensidadNode.textContent}</td>
+                            <td>${alturaMinNode ? alturaMinNode.textContent : 'N/A'}</td>
                             <td>${alturaMaxNode ? alturaMaxNode.textContent : 'N/A'}</td>
-                            <td>${accesoExpressNode.textContent}</td>
+                            <td class="${express}">${accesoExpressNode.textContent}</td>
                             <td>${fechaRevisionNode ? fechaRevisionNode.textContent : 'N/A'}</td>
                             <td>${waitTime}</td>
                             <td>${expressWaitTime}</td>
-                            <td><input type="checkbox" class="favorite-checkbox" data-key="${attractionKey}" ${isFavorite ? 'checked' : ''}></td>
-                            
+                            <td>
+                                <div class="checkbox-wrapper-50">
+                                    <input type="checkbox" class="plus-minus favorite-checkbox" data-key="${attractionKey}" ${isFavorite ? 'checked' : ''}>
+                                </div>
+                            </td>
                         </tr>
                         `;
                     }
                 });
+
                 atraccionesHTML += '</table>';
 
                 // Agregar el HTML generado al documento
@@ -139,8 +183,14 @@ fetch('/datos/ej3.json')
         document.querySelectorAll('.favorite-checkbox').forEach(checkbox => {
             checkbox.addEventListener('change', function() {
                 const key = this.getAttribute('data-key');
-                favorites[key] = this.checked;
+                const attractionName = this.closest('tr').querySelector('td:first-child').textContent; // Obtener el nombre de la atracción
+                if (this.checked) {
+                    favorites[key] = attractionName;
+                } else {
+                    delete favorites[key];
+                }
                 saveFavorites(favorites);
+                console.log("Favoritos guardados:", favorites); // Debugging output
             });
         });
     })

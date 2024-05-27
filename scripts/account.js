@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-    const defaultProfileImg = '/assets/imagenes/default-profile.png'; // Reemplaza con la ruta de tu imagen predeterminada
+    const defaultProfileImg = '/assets/imagenes/default-profile.png'; 
 
     $('#accountButton').on('click', function(event){
         window.location.href = 'cuenta.html';
@@ -28,7 +28,7 @@ $(document).ready(function(){
     function showFavorites() {
         // Obtener los favoritos de localStorage
         const favorites = getFavorites();
-        const username = localStorage.getItem('username');
+        const username = localStorage.getItem('username') || 'Anónimo';
         const profileImg = localStorage.getItem('profile-img') || defaultProfileImg; // Usar imagen predeterminada si no hay imagen en localStorage
 
         // Crear la imagen de perfil y el input para subir una nueva imagen
@@ -40,8 +40,8 @@ $(document).ready(function(){
         // Iterar sobre los favoritos y agregarlos a la lista HTML
         for (const key in favorites) {
             if (favorites[key]) {
-                const [area, nombreComercial] = key.split('_');
-                favoritesListHTML += `<li>${nombreComercial}</li>`;
+                const attractionName = favorites[key];  // Obtener el nombre de la atracción
+                favoritesListHTML += `<li>${attractionName}</li>`;
             }
         }
 

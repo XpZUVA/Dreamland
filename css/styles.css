@@ -5,117 +5,115 @@
     --color-4: #AE445A;
     --color-5: #F39F5A;
     --color-6: #E8BCB9;
+    --colorBG: #1a1a1a;
 }
 
-body {
+.bg-custom{
+    background-color: var(--colorBG);
+    color: white;
+    font-family: 'Roboto', sans-serif;
+}
+
+body{
     font-family: 'Roboto', sans-serif;
     background-color: #1a1a1a;
     color: #fff;
     margin: 0;
     padding: 0;
+    overflow-x: hidden;
 }
 
-nav {
-    top: 0;
-    height: 80px;
-    width: 100%;
-    z-index: 1;
-    background-color: #1a1a1a;
-    border-bottom: 2px solid #1a1a1a;
-    box-shadow: 0px 0px 3px #eee;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    position: fixed;
+/*NAVBAR*/
+.navbar-dark{
+    border-bottom: 3px solid #fff;
 }
 
-.logo {
-    width: 75px;
-    height: 75px;
-    margin-top: 3px;
-    margin-left: 20px;
+.navbar-brand img{
+    width: 70px;
+    height: 70px;
+
+}
+
+#logout{
+    color: #f00;
+}
+
+
+.navbar-toggler {
+    border: 0 !important;
+}
+
+.navbar-toggler:focus,
+.navbar-toggler:active,
+.navbar-toggler-icon:focus {
+    outline: none !important;
+    box-shadow: none !important;
+    border: 0 !important;
+}
+
+/* Lines of the Toggler */
+.toggler-icon{
+    width: 30px;
+    height: 3px;
+    background-color: #e74c3c;
     display: block;
-    background-size: cover;
-    filter: drop-shadow(0px 0px 2px var(--color-2));
+    transition: all 0.2s;
 }
 
-nav p {
-    color: #fff;
-    margin-top: 30px;
-    margin-right: -400px;
-    font-weight: bold;
+/* Adds Space between the lines */
+.middle-bar{
+    margin: 5px auto;
 }
 
-/*LISTA LINKS*/
-nav ul {
-    display: flex;
-    flex-direction: row;
-    list-style: none;
-    margin-right: 20px;
-    margin-top: 30px;
-    margin-left: 0px;
+/* State when navbar is opened (START) */
+.navbar-toggler .top-bar {
+    transform: rotate(45deg);
+    transform-origin: 10% 10%;
 }
 
-nav ul li a {
-    display: inline-block;
-    position: relative;
-    margin: 0px 10px;
-    color: #fff;
-    text-decoration: none;
+.navbar-toggler .middle-bar {
+    opacity: 0;
+    filter: alpha(opacity=0);
 }
 
-nav ul li a:after {
-    content: "";
-    display: block;
-    margin: auto;
-    height: 2px;
-    width: 0px;
-    transition: all .5s;
+.navbar-toggler .bottom-bar {
+    transform: rotate(-45deg);
+    transform-origin: 10% 90%;
+}
+/* State when navbar is opened (END) */
+
+/* State when navbar is collapsed (START) */
+.navbar-toggler.collapsed .top-bar {
+    transform: rotate(0);
 }
 
-nav ul li a:hover {
-    color: var(--color-3);
+.navbar-toggler.collapsed .middle-bar {
+    opacity: 1;
+    filter: alpha(opacity=100);
 }
 
-nav ul li a:hover:after {
-    width: 100%;
-    color: var(--color-3);
-    background: var(--color-3);
+.navbar-toggler.collapsed .bottom-bar {
+    transform: rotate(0);
+}
+/* State when navbar is collapsed (END) */
+
+/* Color of Toggler when collapsed */
+.navbar-toggler.collapsed .toggler-icon {
+    background-color: #777777;
 }
 
-/*BOTON*/
-nav ul li button {
-    background-color: transparent;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    margin-right: 20px;
-    margin-top: -10px;
-    margin-left: 10px;
-    cursor: pointer;
-    border-radius: 5px;
-    font-size: 16px;
-    font-weight: bold;
-    border: 2px solid var(--color-3);
-    position: relative;
-    overflow: hidden;
-    transition: all 0.5s ease-in-out;
-}
-
-nav ul li button:hover {
-    background-color: var(--color-3);
-    color: #fff;
-}
 
 /*MAIN*/
 main {
-    margin-top: 80px;
+    margin-top: 5vw;
+    padding: 0 20px; /* Add this */
+    box-sizing: border-box; /* Add this */
 }
 
 /*IMAGEN NORIA*/
 .fondoNoria {
     width: 100%;
-    height: 600px;
+    height: 40vw;
     position: relative;
     overflow: hidden;
 }
@@ -129,15 +127,27 @@ main {
 
 #texto {
     position: absolute;
-    z-index: -1;
+    margin-top: 5vh;
+    z-index: 1; 
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     color: #fff;
-    font-size: 50px;
+    font-size: 3vw;
     font-weight: bold;
     text-align: center;
     text-shadow: 0px 0px 5px #000;
+    box-sizing: border-box; 
+    margin-bottom: 0;
+}
+
+
+#texto h1{
+    font-size: 4vw;
+    font-weight: bold;
+    text-align: center;
+    text-shadow: 0px 0px 5px #000; 
+    box-sizing: border-box; 
 }
 
 /*ATRACCIONES*/
@@ -145,7 +155,8 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 100px;
+    margin: 100px 20px; 
+    box-sizing: border-box; 
 }
 
 #atraccionesImportantes h2 {
@@ -157,14 +168,17 @@ main {
 
 .atracciones {
     display: flex;
-    list-style: none;
     flex-direction: row;
-    z-index: -1;
+    flex-wrap: wrap; 
+    justify-content: center; 
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
 .atracciones li {
     margin: 20px;
-    padding: 0px;
+    padding: 0;
     background-color: var(--color-1);
     border-radius: 10px;
     box-shadow: 0px 0px 5px #000;
@@ -172,12 +186,18 @@ main {
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
+    width: calc(100% - 40px); 
+    max-width: 300px; 
+}
+
+.atracciones li:hover {
+    transform: scale(1.1);
 }
 
 .atracciones img {
     width: 100%;
     height: 300px;
-    margin: 0px;
+    margin: 0;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
 }
@@ -186,15 +206,22 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    
 }
 
 .textoAtracciones h3 {
     color: #fff;
     font-size: 30px;
     font-weight: bold;
-    margin-top: 20px;
-    margin-bottom: 5px;
+    margin: 20px 0 5px; 
     border-bottom: 1px solid #fff;
+}
+
+.textoAtracciones p {
+    color: #fff;
+    font-size: 16px;
+    margin: 5px 20px; 
 }
 
 /*MAPA*/
@@ -202,6 +229,8 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 0 20px; /* Add this */
+    box-sizing: border-box; /* Add this */
 }
 
 #localizacion h2 {
@@ -213,7 +242,8 @@ main {
 
 #map {
     height: 400px;
-    width: 30%;
+    width: 100%; /* Modify this */
+    max-width: 600px; /* Add this */
     box-shadow: 0px 0px 5px #000;
     z-index: -1;
 }
@@ -223,7 +253,8 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 100px;
+    margin: 100px 20px; /* Modify this */
+    box-sizing: border-box; /* Add this */
 }
 
 #comentarios h2 {
@@ -238,7 +269,9 @@ main {
     flex-direction: column;
     align-items: center;
     margin: 5px;
-    z-index: 0;
+    width: 100%; /* Add this */
+    max-width: 800px; /* Add this */
+    box-sizing: border-box; /* Add this */
 }
 
 #postComentario textarea {
@@ -252,6 +285,7 @@ main {
     font-weight: bold;
     font-family: 'Roboto';
     resize: none;
+    box-sizing: border-box; /* Add this */
 }
 
 /*BOTON*/
@@ -260,9 +294,6 @@ main {
     color: #fff;
     border: none;
     padding: 10px 20px;
-    margin-right: 20px;
-    margin-top: -10px;
-    margin-left: 10px;
     cursor: pointer;
     border-radius: 5px;
     font-size: 16px;
@@ -286,33 +317,31 @@ main {
     margin-top: 100px;
     padding: 20px;
     border-radius: 5px;
+    box-sizing: border-box; 
 }
 
-/* Comments header */
 #comentariosPostedContainer h2 {
     text-align: center;
     margin-bottom: 70px;
 }
 
-/* Comments list */
 #comentariosPosted ul {
     list-style: none;
     padding: 0;
+    margin: 0; 
 }
 
-/* Individual comment item */
 #comentariosPosted li {
     margin-bottom: 20px;
     padding-bottom: 15px;
+    box-sizing: border-box; 
 }
 
-/* User comment info */
 .userComentario {
     display: flex;
     align-items: center;
 }
 
-/* Profile image */
 .profileImageComentarios {
     width: 50px;
     height: 50px;
@@ -320,30 +349,28 @@ main {
     margin-right: 10px;
 }
 
-/* Username */
 .usernameComentario {
     font-weight: bold;
     margin: 0;
 }
 
-/* Comment text */
 .comentarioP {
     margin-top: 20px;
-    margin-bottom: 0px;
+    margin-bottom: 0;
 }
 
 /*FOOTER*/
-
 footer {
     background-color: #1a1a1a;
     color: #fff;
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap; 
     justify-content: space-around;
     border-top: 3px solid #fff;
     width: 100%;
-    margin-top: 100px;
-    box-sizing: border-box;
+    padding: 20px; 
+    box-sizing: border-box; 
 }
 
 .contacto {
@@ -374,7 +401,7 @@ footer {
     color: var(--color-4);
 }
 
-.contacto p span{
+.contacto p span {
     font-weight: bold;
     color: var(--color-3);
 }
@@ -387,8 +414,9 @@ footer {
     display: flex;
     flex-direction: row;
     align-items: center;
-    margin: 20px;
     list-style: none;
+    margin: 0; 
+    padding: 0; 
 }
 
 .redesSociales li {
@@ -396,8 +424,8 @@ footer {
 }
 
 .redesSociales img {
-    width: 100px;
-    height: 100px;
+    width: 50px; 
+    height: 50px; 
 }
 
 .redesSociales img:hover {
@@ -430,23 +458,18 @@ footer {
 
 /* TELÉFONO */
 @media only screen and (max-width: 768px) {
-    nav ul {
-        flex-direction: column;
-        align-items: center;
-        margin: 0;
-    }
-
-    nav p {
-        margin-right: 0;
-        margin-top: 10px;
-    }
+    
 
     .fondoNoria {
-        height: 300px;
+        height: 60vw;
     }
 
     #texto {
-        font-size: 30px;
+        font-size: 2.5vw;
+    }
+
+    #texto h1 {
+        font-size: 3vw;
     }
 
     .atracciones {
@@ -460,6 +483,16 @@ footer {
 
     #postComentario textarea {
         width: 90%;
+    }
+
+    footer {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .redesSociales img {
+        width: 50px;
+        height: 50px;
     }
 }
 
@@ -503,6 +536,7 @@ footer {
     }
 
     #postComentario textarea {
-        width: 300%;
+        width: 100%; 
+        max-width: 800px; 
     }
 }
