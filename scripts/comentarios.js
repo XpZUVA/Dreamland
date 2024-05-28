@@ -13,18 +13,19 @@ $(document).ready(function() {
 
     
     function validateCommentLength(comentario) {
-        var regex = new RegExp(/(?:[\w\b;:,\.]+[\s\r\n]*){0,100}/);
-        return regex.test(comentario);
+        var regex = new RegExp(/^.{0,300}$/);
+        var regexSQL = new RegExp("\\b(SELECT|INSERT|UPDATE|DELETE|DROP|CREATE|ALTER|GRANT|REVOKE|TRUNCATE|EXEC|UNION|--|;|/\\*|\\*/|xp_)\\b", "i");
+        return regex.test(comentario) && !regexSQL.test(comentario);
     }
 
     
     function showErrorMessages(messages) {
-        $('.errorMessages').html(messages.join('<br>'));
+        $('.errorMessagesComentarios').html(messages.join('<br>'));
     }
 
     
     function clearErrorMessages() {
-        $('.errorMessages').html('');
+        $('.errorMessagesComentarios').html('');
     }
 
     
@@ -38,7 +39,12 @@ $(document).ready(function() {
         var errorMessages = [];
 
         if (!isValid) {
-            errorMessages.push('El comentario no puede tener más de 100 caracteres.');
+
+            if(comentario.length > 300) {
+                errorMessages.push('El comentario no puede tener más de 300 caracteres');
+            }else{
+                errorMessages.push('El comentario no puede contener palabras reservadas');
+            }
         }
 
         if (errorMessages.length > 0) {
@@ -61,7 +67,7 @@ $(document).ready(function() {
         
 
         comentarios.forEach(comentario => {
-            comentariosHTML += `<li><div class="userComentario"><img class="profileImageComentarios" src="${comentario.profileImg}"><h3 class="usernameComentario">${comentario.nombre}</h3></div><p class="comentarioP">${comentario.comentario}</p></li>`;
+            comentariosHTML += `<li><div class="userComentario"><div class="userImageContainer"><img class="profileImageComentarios" src="${comentario.profileImg}"></div><h3 class="usernameComentario">${comentario.nombre}</h3></div><p class="comentarioP">${comentario.comentario}</p></li>`;
         });
         comentariosHTML += '</ul>';
         $('#comentariosPosted').html(comentariosHTML);
@@ -69,7 +75,8 @@ $(document).ready(function() {
 
     
     showComentarios();
-    //localStorage.removeItem('comentarios');
+    
+    
     
     
 });

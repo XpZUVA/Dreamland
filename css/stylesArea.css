@@ -210,12 +210,12 @@ to {
     color: #0f0;
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 767px) {
 
     #areas-container .table{
         
         height: 1vw;
-        font-size: 0.25em;
+        font-size: 0.34em;
         margin: 1vw 0;
     }
 
@@ -228,7 +228,7 @@ to {
 }
 
 /* TABLET */
-@media only screen and (min-width: 769px) and (max-width: 991px) {
+@media only screen and (min-width: 768px) and (max-width: 991px) {
     #areas-container .table{
         
         height: 10vw;

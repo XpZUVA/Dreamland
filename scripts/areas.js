@@ -76,7 +76,6 @@ fetch('/datos/ej3.json')
                     <th>Altura mínima</th>
                     <th>Altura máxima</th>
                     <th>Acceso express</th>
-                    <th>Fecha de revisión</th>
                     <th>Tiempo de espera</th>
                     <th>Tiempo de espera express</th>
                     <th>Favorito</th>
@@ -91,7 +90,6 @@ fetch('/datos/ej3.json')
                     const alturaMinNode = atraccion.querySelector('alturaMin');
                     const alturaMaxNode = atraccion.querySelector('alturaMax');
                     const accesoExpressNode = atraccion.querySelector('accesoExpress');
-                    const fechaRevisionNode = atraccion.querySelector('fechaRevision');
 
                     // Generar una clave única para la atracción
                     const attractionKey = `${areaAcronym}-${String(atraccionIndex + 1).padStart(2, '0')}`;
@@ -157,7 +155,6 @@ fetch('/datos/ej3.json')
                             <td>${alturaMinNode ? alturaMinNode.textContent : 'N/A'}</td>
                             <td>${alturaMaxNode ? alturaMaxNode.textContent : 'N/A'}</td>
                             <td class="${express}">${accesoExpressNode.textContent}</td>
-                            <td>${fechaRevisionNode ? fechaRevisionNode.textContent : 'N/A'}</td>
                             <td>${waitTime}</td>
                             <td>${expressWaitTime}</td>
                             <td>

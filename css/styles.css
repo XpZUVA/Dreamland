@@ -14,6 +14,13 @@
     font-family: 'Roboto', sans-serif;
 }
 
+.bg-nav-footer{
+    background-color: #121212;
+    color: white;
+    font-family: 'Roboto', sans-serif;
+
+}
+
 body{
     font-family: 'Roboto', sans-serif;
     background-color: #1a1a1a;
@@ -28,10 +35,21 @@ body{
     border-bottom: 3px solid #fff;
 }
 
+.navbar-dark .navbar-nav .nav-link{
+    color: #fff;
+    
+    font-size: 16px;
+    margin: 0 2px;
+}
+
 .navbar-brand img{
     width: 70px;
     height: 70px;
+}
 
+#idGroup{
+    font-weight: bold;
+    font-size: 20px;
 }
 
 #logout{
@@ -234,13 +252,14 @@ main {
     font-size: 30px;
     font-weight: bold;
     margin: 20px 0 5px; 
-    border-bottom: 1px solid #fff;
+    
 }
 
 .textoAtracciones p {
     color: #fff;
     font-size: 16px;
-    margin: 5px 20px; 
+    padding: 5px 20px;
+    margin-left: 30px; 
 }
 
 /*MAPA*/
@@ -248,8 +267,8 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 0 20px; /* Add this */
-    box-sizing: border-box; /* Add this */
+    padding: 0 20px; 
+    box-sizing: border-box; 
 }
 
 #localizacion h2 {
@@ -261,10 +280,9 @@ main {
 
 #map {
     height: 400px;
-    width: 100%; /* Modify this */
-    max-width: 600px; /* Add this */
+    width: 100%; 
+    max-width: 800px; 
     box-shadow: 0px 0px 5px #000;
-    z-index: -1;
 }
 
 /*COMENTARIOS*/
@@ -272,8 +290,8 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 100px 20px; /* Modify this */
-    box-sizing: border-box; /* Add this */
+    margin: 100px 20px; 
+    box-sizing: border-box; 
 }
 
 #comentarios h2 {
@@ -288,9 +306,9 @@ main {
     flex-direction: column;
     align-items: center;
     margin: 5px;
-    width: 100%; /* Add this */
-    max-width: 800px; /* Add this */
-    box-sizing: border-box; /* Add this */
+    width: 100%; 
+    max-width: 800px; 
+    box-sizing: border-box; 
 }
 
 #postComentario textarea {
@@ -307,6 +325,12 @@ main {
     box-sizing: border-box; /* Add this */
 }
 
+.errorMessagesComentarios{
+    color: red;
+    font-weight: bold;
+    margin: 20px;
+
+}
 /*BOTON*/
 #postComentario input {
     background-color: transparent;
@@ -361,16 +385,31 @@ main {
     align-items: center;
 }
 
-.profileImageComentarios {
-    width: 50px;
-    height: 50px;
+.userImageContainer{
+    width: 50px; 
+    height: 50px; 
+    overflow: hidden; 
+    position: relative;
+    border-radius: 50%;
+}
+
+.userImageContainer img{
+    width: 100%;
+    height: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     border-radius: 50%;
     margin-right: 10px;
 }
 
 .usernameComentario {
     font-weight: bold;
+    font-size: 20px;
     margin: 0;
+    margin-left: 10px;
+    
 }
 
 .comentarioP {
@@ -504,7 +543,7 @@ footer {
         width: 90%;
     }
 
-    footer {
+    footer{
         flex-direction: column;
         align-items: center;
     }

@@ -81,7 +81,6 @@
             </atraccion>
         </atracciones>
     </area>
-    </areas>
     <area nombre="The Far West">
         <decoracion>Decoración de vaqueros</decoracion>
         <atracciones>
@@ -191,5 +190,6 @@
             </atraccion>
         </atracciones>
     </area>
+    </areas>
 
 </parque>

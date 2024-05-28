@@ -8,7 +8,15 @@
     --colorBG: #1a1a1a;
 }
 
-#formLogin{
+
+.formRegisterDiv{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+#formRegister{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -20,13 +28,13 @@
     margin-bottom: 200px;
     background-color: #eee;    
     padding: 20px;
+    margin-top: 100px;
 }
 
-#formLogin h1{
+#formRegister h1{
     color: var(--color-1);
-    font-size: 2.5em;
-    margin-left: 75px;
-    padding: 20px;
+    font-size: 34px;
+    margin: 20px;
 }
 
 .input-wrapper {
@@ -38,7 +46,7 @@
     align-items: center;
 }
 
-.input-wrapper input {
+.input-wrapper input{
     padding: var(--padding);
     border: 2px solid var(--color-1);
     outline: none;
@@ -66,43 +74,21 @@
     color: var(--color-1);
 }
 
-#loginButton{
+#registerButton{
     background-color: transparent;
-    border: 2px solid #0f0;
-    color: #0f0;
-    padding: 5px 10px;
-    border-radius: 10px;
-    margin: 20px;
+    color: #000;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
     cursor: pointer;
-    font-weight: bold;
+    margin-top: 20px;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
 }
 
-#loginButton:hover{
+#registerButton:hover{
+    background-color: var(--color-1);
+    color: #fff;
     
-    transform: scale(1.1);
-    transition: 0.5s;
-}
-
-#createAccountButton{
-    background-color: transparent;
-    border: 2px solid #48e;
-    color: #48e;
-    padding: 5px 10px;
-    border-radius: 10px;
-    margin: 10px;
-    cursor: pointer;
-    font-weight: bold;
-}
-
-#createAccountButton:hover{
-    
-    transform: scale(1.1);
-    transition: 0.5s;
-}
-
-#createAccountButton a{
-    text-decoration: none;
-    color: #48e;
 }
 
 .errorMessages{
@@ -114,6 +100,5 @@
     border-radius: 10px;
     background-color: #eee;
     text-align: center;
-    
 }
 
