@@ -13,7 +13,7 @@ $(document).ready(function(){
         var password = $('#password').val();
         var confirmPassword = $('#passwordRepeat').val();
 
-        var nameRegex = /^[A-Za-z\s]+$/;
+        var nameRegex = /^[A-Za-z\s]+$/; // Solo letras y espacios
         var userRegex = /^(?=[a-zA-Z0-9._]{3,20}$)(?!.*[_.]{2})[^_.].*[^_.]$/;
         var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         var passwordRegex = /^[A-Za-z\d@$!%*?&]{8,}$/;

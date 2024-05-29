@@ -13,7 +13,7 @@ $(document).ready(function() {
         var email = $('#email').val().trim();
         var password = $('#password').val().trim();
 
-        var userRegex = /^(?=[a-zA-Z0-9._]{3,20}$)(?!.*[_.]{2})[^_.].*[^_.]$/;
+        var userRegex = /^(?=[a-zA-Z0-9._]{3,20}$)(?!.*[_.]{2})[^_.].*[^_.]$/; // Entre 3 y 20 caracteres, no puede contener dos puntos ni guiones ni espacios
         var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         var passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/; // Mínimo 8 caracteres, al menos una letra y un número
 

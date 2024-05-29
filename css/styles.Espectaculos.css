@@ -32,7 +32,7 @@
 
 
 #PLAesp {
-    position: relative; /* Asegura que el pseudo-elemento esté posicionado correctamente */
+    position: relative;
     background-color: var(--color-1);
     color: white;
     padding: 1vw;
@@ -81,7 +81,7 @@
 }
 
 #TFWesp {
-    position: relative; /* Asegura que el pseudo-elemento esté posicionado correctamente */
+    position: relative; 
     background-color: var(--color-1);
     color: white;
     padding: 1vw;
@@ -131,7 +131,7 @@
 
 
 #PIResp {
-    position: relative; /* Asegura que el pseudo-elemento esté posicionado correctamente */
+    position: relative;
     background-color: var(--color-1);
     color: white;
     padding: 1vw;
@@ -181,7 +181,7 @@
 }
 
 #CCLesp {
-    position: relative; /* Asegura que el pseudo-elemento esté posicionado correctamente */
+    position: relative;
     background-color: var(--color-1);
     color: white;
     padding: 1vw;
@@ -231,7 +231,7 @@
 }
 
 #FUTesp {
-    position: relative; /* Asegura que el pseudo-elemento esté posicionado correctamente */
+    position: relative;
     background-color: var(--color-1);
     color: white;
     padding: 1vw;

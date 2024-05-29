@@ -13,7 +13,6 @@ function saveFavorites(favorites) {
 fetch('/datos/ej3.json')
     .then(response => response.json())
     .then(waitTimesData => {
-        console.log("JSON de tiempos de espera:", waitTimesData);  // Debugging output
         const waitTimes = {};
         waitTimesData.atracciones.forEach(item => {
             const [key, value] = Object.entries(item)[0];
@@ -29,8 +28,6 @@ fetch('/datos/ej3.json')
         // Crear un nuevo parser XML
         const parser = new DOMParser();
         const xmlDoc = parser.parseFromString(xmlText, "text/xml");
-        
-        console.log("XML Document:", xmlDoc);  // Debugging output
 
         // Mapeo de acrónimos
         const areaAcronyms = {
@@ -55,7 +52,7 @@ fetch('/datos/ej3.json')
 
             // Obtener el acrónimo del nombre del área
             const areaAcronym = areaAcronyms[nombre];
-            console.log(`Procesando área: ${nombre} (${areaAcronym})`);  // Debugging output
+            console.log(`Procesando área: ${nombre} (${areaAcronym})`);
 
             // Verificar si hay al menos una atracción en el área
             const atracciones = area.querySelectorAll('atraccion');
@@ -158,9 +155,9 @@ fetch('/datos/ej3.json')
                             <td>${waitTime}</td>
                             <td>${expressWaitTime}</td>
                             <td>
-                                <div class="checkbox-wrapper-50">
-                                    <input type="checkbox" class="plus-minus favorite-checkbox" data-key="${attractionKey}" ${isFavorite ? 'checked' : ''}>
-                                </div>
+                            <div class="checkbox-wrapper-50">
+                                <input type="checkbox" class="plus-minus favorite-checkbox" data-key="${attractionKey}" ${isFavorite ? 'checked' : ''}>
+                            </div>
                             </td>
                         </tr>
                         `;
@@ -180,14 +177,14 @@ fetch('/datos/ej3.json')
         document.querySelectorAll('.favorite-checkbox').forEach(checkbox => {
             checkbox.addEventListener('change', function() {
                 const key = this.getAttribute('data-key');
-                const attractionName = this.closest('tr').querySelector('td:first-child').textContent; // Obtener el nombre de la atracción
+                const attractionName = this.closest('tr').querySelector('td:first-child').textContent; 
                 if (this.checked) {
                     favorites[key] = attractionName;
                 } else {
                     delete favorites[key];
                 }
                 saveFavorites(favorites);
-                console.log("Favoritos guardados:", favorites); // Debugging output
+                console.log("Favoritos guardados:", favorites);
             });
         });
     })
